@@ -2,7 +2,8 @@ import numpy as np
 
 entradas = np.array([[0, 0], [0,1], [1,0], [1,1]])
 pesos = np.array([0.0, 0.0])
-saidas = np.array([0,0,0,1])
+# saidas = np.array([0,0,0,1]) # operator and
+saidas = np.array([0,1,1,1]) # operator or
 taxaAprendizagem = 0.1
 
 
@@ -30,7 +31,7 @@ def treinar():
             for j in range(len(pesos)):
                 pesos[j] = pesos[j] + (taxaAprendizagem * entradas [i][j] * erro)
                 print("peso atualizado: {}".format(pesos[j]))
-        print('Total de erros: {}'.format(erroTotal))
+        print('Total de erros: {} => {}%'.format(erroTotal, (erroTotal/len(saidas)*100)))
 
 if __name__ == '__main__':
     treinar()
