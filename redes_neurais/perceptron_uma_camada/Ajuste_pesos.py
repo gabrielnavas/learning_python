@@ -1,40 +1,42 @@
 import numpy as np
 
-entrada = np.array([[0, 0], [0,1], [1,0], [1,1]])
-pesos = np.array([[0, 0], [0, 0], [0,0], [0,0]])
-resultado = np.array([0,0,0,1])
-TAXA_APRENDIZAGEM = 0.1
+entradas = np.array([[0, 0], [0,1], [1,0], [1,1]])
+pesos = np.array([0.0, 0.0])
+saidas = np.array([0,0,0,1])
+taxaAprendizagem = 0.1
 
-def calc_erro(respostaCorreta, respostaCalculada, pesoAtual, entradaAtual):
-    erro = respostaCorreta - respostaCalculada
-    novo_peso = pesoAtual + (TAXA_APRENDIZAGEM * entradaAtual * erro)
 
-    return novo_peso
+def stepFunction(soma):
+    if(soma >= 1):
+        return 1
+    return 0
 
-def aprender_no(entrada, peso, resultado, result_calc):
+def calculaSaida(registro):
+    s = registro.dot(pesos)
+    return stepFunction(s)
 
-    novo_peso = calc_erro(resultado, result_calc, pesos, entrada)
-    peso = novo_peso
+def treinar():
+    """
+        Algorítmo para encontrar os pesos
+        dos neuronios
+    """
+    erroTotal = 1
+    while erroTotal != 0:
+        erroTotal=0
+        for i in range(len(saidas)):
+            saidaCalculada = calculaSaida(np.asarray(entradas[i]))
+            erro = (saidas[i] - saidaCalculada)
+            erroTotal += erro
+            for j in range(len(pesos)):
+                pesos[j] = pesos[j] + (taxaAprendizagem * entradas [i][j] * erro)
+                print("peso atualizado: {}".format(pesos[j]))
+        print('Total de erros: {}'.format(erroTotal))
 
-def aprender(entrada, pesos, resultado):
+if __name__ == '__main__':
+    treinar()
 
-    for i in range(4):
-        print(entrada[i])
-        print(pesos[i])
-        print(resultado[i])
-
-        soma = somar(entrada, pesos[i])
-        result_calc = stepFun(soma)
-
-        aprender_no(entrada[i], pesos[i], resultado[i], result_calc)
-
-def stepFun(x):
-    return 1 if x >= 1 else 0
-
-def somar(e, p):
-    return e.dot(p)
-
-aprender(entrada, pesos, resultado)
-
-print(entrada)
-print(pesos)
+    print("rede neural treinada")
+    print(calculaSaida(entradas[0]))
+    print(calculaSaida(entradas[1]))
+    print(calculaSaida(entradas[2]))
+    print(calculaSaida(entradas[3]))
