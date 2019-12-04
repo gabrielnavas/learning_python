@@ -1,0 +1,1 @@
+http://pyscience-brasil.wikidot.com/docitem:numpy-exp
