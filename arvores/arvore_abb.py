@@ -62,7 +62,7 @@ def buscar(tree=[], pos=0, info=None):
         aux = tree[0]
 
         while (flag is False):
-            pai = pos
+            # pai = pos
             if (info < tree[pos].info):
                 if (tree[pos].esq != -1):
                     pos = tree[aux.esq]
@@ -75,7 +75,7 @@ def buscar(tree=[], pos=0, info=None):
                     flag = True
 
 
-return False, -1, -1
+# return False, -1, -1
 
 tree = []
 
@@ -93,8 +93,3 @@ exibir_in(tree)
 
 print("\npos-order")
 exibir_pos(tree)
-
-achou, pos_pai, pos_no = buscar(tree, info = 130)
-
-if(achou):
-    print("pai: {0}, no: {1}", tree[pos_pai], tree[pos_no])

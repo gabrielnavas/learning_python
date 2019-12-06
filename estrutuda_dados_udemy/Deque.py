@@ -6,7 +6,7 @@ class No:
         self.next_no = next_no
 
     def getNext(self):
-        return next_no
+        return self.next_no
 
     def show(self, cont=None):
         print("[{} {}, {}, {}]".format(cont if cont is not None else '',

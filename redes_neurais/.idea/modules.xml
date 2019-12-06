@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../estrutuda_dados_udemy/.idea/estrutuda_dados_udemy.iml" filepath="$PROJECT_DIR$/../estrutuda_dados_udemy/.idea/estrutuda_dados_udemy.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/redes_neurais.iml" filepath="$PROJECT_DIR$/.idea/redes_neurais.iml" />
     </modules>
   </component>
