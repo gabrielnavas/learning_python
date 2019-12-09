@@ -38,7 +38,6 @@ class ListaDuplamenteEncadeada:
             aux=aux.prox
 
 
-
 if __name__ == '__main__':
     lista = ListaDuplamenteEncadeada()
 
@@ -47,5 +46,3 @@ if __name__ == '__main__':
         lista.inserir(i)
 
     lista.exibir()
-
-
