@@ -1,67 +1,68 @@
-branco_p = []
-branco_m = []
-branco_g = []
-vermelho_p = []
-vermelho_m = []
-vermelho_g = []
+ll = [[] for _ in range(6)]
+
+
+#ll[0] = branco p 
+#ll[1] = //     m
+#ll[2] = //     g
+#ll[3] = vermelho p
+#ll[4] = vermelho m
+#ll[5] = vermelho g
+
 
 n = int(input())
-
 while n != 0:
 
+    # filter
     while 2*n > 0:
         nome = input()
         cor, tamanho = input().rsplit(' ')
 
         if cor == 'branco':
             if tamanho == 'P':
-                branco_p.append(nome)
+                ll[0].append(nome)
             elif tamanho == 'M':
-                branco_m.append(nome)
+                ll[1].append(nome)
             else:
-                branco_g.append(nome)
+                ll[2].append(nome)
         else:
             if tamanho == 'P':
-                vermelho_p.append(nome)
+                ll[3].append(nome)
             elif tamanho == 'M':
-                vermelho_m.append(nome)
+                ll[4].append(nome)
             else:
-                vermelho_g.append(nome)
+                ll[5].append(nome)
         n -= 1
 
-    branco_p.sort()
-    branco_m.sort()
-    branco_g.sort()
-    vermelho_p.sort()
-    vermelho_m.sort()
-    vermelho_g.sort()
+    # sort all
+    for l in ll:
+        l.sort()
 
-    for nome in branco_p:
+    # show result set
+    for nome in ll[0]:
         print('branco P {}'.format(nome))
-
-    for nome in branco_m:
+                
+    for nome in ll[1]:
         print('branco M {}'.format(nome))
 
-    for nome in branco_g:
+    for nome in ll[2]:
         print('branco G {}'.format(nome))
 
 
-    for nome in vermelho_p:
+    for nome in ll[3]:
         print('vermelho P {}'.format(nome))
 
-    for nome in vermelho_m:
+    for nome in ll[4]:
         print('vermelho M {}'.format(nome))
 
-    for nome in vermelho_g:
-        print('ermelho G {}'.format(nome))
+    for nome in ll[5]:
+        print('vermelho G {}'.format(nome))
 
     n = int(input())
-    print()
-    branco_p.clear()
-    branco_m.clear()
-    branco_g.clear()
-    vermelho_p.clear()
-    vermelho_m.clear()
-    vermelho_g.clear()
 
+    if n > 0:
+        print()
+            
+    for l in ll:
+        l.clear()
+    
 
