@@ -35,7 +35,7 @@ class BinaryTree:
     def inOrder(self):
 
         def inOrdem(no):
-            if no != None:
+            if no is not None:
                 inOrdem(no.left)
                 print(no.label)
                 inOrdem(no.right)
@@ -45,7 +45,7 @@ class BinaryTree:
     def inOrderInverter(self):
 
         def inOrdem(no):
-            if no != None:
+            if no is not None:
                 inOrdem(no.right)
                 print(no.label)
                 inOrdem(no.left)
@@ -75,7 +75,7 @@ class BinaryTree:
         no = self.root
         father = no
 
-        while no != None and no.label != label:
+        while no != None and no.label is not label:
             father = no
 
             if label < no.label:
@@ -85,10 +85,18 @@ class BinaryTree:
 
         return no, father
 
-    def remove(self, no, father):
+    def remove(self, label):
+        no, father = bt.searchNoAndFather(label)
+#        print('aaaa {}'.format(no.label))
+#        print('bbb {}'.format(father.label))
+        
+        if no is not None:
+            self.__remove(no, father)
 
+    def __remove(self, no, father):
+                
         # is leaf
-        if no.left != None and no.right != None:
+        if no.left == None and no.right == None:
             if no != father:
                 if no.label > father.label:
                     father.right = None
@@ -96,27 +104,28 @@ class BinaryTree:
                     father.left = None
             else:
                 self.root = None
+                
         elif no.left == None or no.right == None:
             # 1 son
             if no != father:
-                if no.label > father.label:
-                    if no.right == None:
+                if no.label < father.label:
+                    if no.left != None:
+                        father.left = no.left
+                    else:
+                        father.left = no.right
+                else:
+                    if no.left == None:
                         father.right = no.left
                     else:
                         father.right = no.right
-                else:
-                    if no.right == None:
-                        father.left = no.left
-                    else:
-                        father.right = no.right
             else:
-                if no.left == None:
-                    self.root = no.right
-                else:
+                if no.left != None:
                     self.root = no.left
+                else:
+                    self.root = no.right
         else:
             # 2 son
-            sub = no.dir
+            sub = no.right
             fatherSub = no
             while sub.left != None:
                 fatherSub = sub
@@ -125,18 +134,18 @@ class BinaryTree:
             no.label = sub.label
             sub.label += 1
 
-            self.remove(sub, fatherSub)
+            self.__remove(sub, fatherSub)
 
 
 if __name__ == '__main__':
     bt = BinaryTree()
 
-    for i in range(30, 50):
+    for i in [10, 8, 5, 9, 15, 14, 17]:
         bt.insert(i)
-
-    for i in range(30, 49):
-        no, father = bt.searchNoAndFather(i)
-        bt.remove(no, father)
+    
+    bt.inOrder()
+    for i in [10, 8, 5, 9, 15, 14, 17]:
+        bt.remove(i)
 
     print("in order inverter")
-    bt.inOrderInverter()
+    bt.inOrder()
