@@ -1,3 +1,5 @@
+#errado
+
 class Fila:
 
     def __init__(self):
@@ -33,33 +35,21 @@ def process():
 
     while n > 0:
         fila.init()
+
         expr = input()
         for ch in expr:
-            is_char = True
-            for op in ['*', '/', '+', '-', '^']:
-                if ch == op:
-                    is_char=False
-                    break
-
-            if is_char:
+            if ch == '*' or ch == '/' or ch == '+' or ch == '-':
+              if op != '':
                 fila.enqueue(ch)
-            else:
-                if ch != '(' and ch != ')':
-                    if op == '':
-                        op = ch
-                    else:
-                        while not fila.empty():
-                            print(fila.front(), end='')
-                            fila.deqeue()
-                        print(op, end='')
-                        op = ch
-
-            while not fila.empty():
-                print(fila.front())
-                fila.deqeue()
-            print(op, end='')
-
+                while not fila.empty():
+                    elem = fila.front()
+                    fila.deqeue()
+                    print(elem, end='')
+                print(op, end='')
+                op = ch
+              
+            elif ch != '(' and ch != ')':
+              fila.enqueue(ch)
         n -= 1
-        print()
 
 process()

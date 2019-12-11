@@ -55,10 +55,10 @@ class FilaPriori(object):
             print(self.fila[i].toStr())
  
 f = FilaPriori()
-f.insert(No(7, 'gabriel'))
-f.insert(No(5, 'gabriel'))
-f.insert(No(3, 'gabriel'))
-f.insert(No(1, 'gabriel'))
+f.insert(Person(7, 'gabriel'))
+f.insert(Person(5, 'gabriel'))
+f.insert(Person(3, 'gabriel'))
+f.insert(Person(1, 'gabriel'))
 f.show()
 
              
