@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../algebra_linear/.idea/algebra_linear.iml" filepath="$PROJECT_DIR$/../algebra_linear/.idea/algebra_linear.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/estrutura_dados_udemy.iml" filepath="$PROJECT_DIR$/.idea/estrutura_dados_udemy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../speech_to_text/.idea/speech_to_text.iml" filepath="$PROJECT_DIR$/../speech_to_text/.idea/speech_to_text.iml" />
+    </modules>
+  </component>
+</project>
