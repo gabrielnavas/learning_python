@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Sep 18 14:16:04 2017
-
-@author: Jones
-"""
 entradas = [-1, 7, 5]
 pesos = [0.8, 0.1, 0]
 
