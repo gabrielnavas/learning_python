@@ -44,11 +44,12 @@ def get_app(Q: str):
 
 
 def listen(r):
-    # obtain audio from the microphone
+    # obtain audios from the microphone
 
     with sr.Microphone() as source:
         print("Say something!")
         audio = r.listen(source)
+        return audio
 
 def recognizar(r, audio):
     # recognize speech using Google Speech Recognition
@@ -57,14 +58,7 @@ def recognizar(r, audio):
     except:
         print('problema na recognize.')
 
-while True:
 
-    # Call get_app(Query) Func.
-    r = sr.Recognizer()
-    audio = listen(r)
-    query = recognizar(r, audio)
+while 1:
 
-    get_app(query)
-
-    if isinstance(query, int) and query == -1:
-        break
+    r = sr.Microphone()

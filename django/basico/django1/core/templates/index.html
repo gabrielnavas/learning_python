@@ -1,0 +1,34 @@
+<!-- {% load static %} -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Django 1 - Index</title>
+    <!-- <link rel="stylesheet" href="{% static 'css/estilos.css' %}"> -->
+</head>
+<body>
+    <h1>Index</h1>
+    <h3>{{ texto_pagina }}</h3>
+    <h3>{{ outro_texto }}</h3>
+    <h3>{{ logado }}</h3>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <td>Produto</td>
+                <td>Preço</td>
+<!--                <td>Estoque</td>-->
+            </tr>
+        </thead>
+        <tbody>
+        {% for produto in produtos %}
+            <tr>
+                <td><a href="{% url 'produto' produto.id %}">{{ produto.nome }}</a></td>
+                <td>{{ produto.preco }}</td>
+<!--                <td>{{ produto.estoque }}</td>-->
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
